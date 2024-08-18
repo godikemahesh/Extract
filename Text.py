@@ -25,7 +25,7 @@ def main():
     st.write("Or click a photo with your webcam:")
 
     if st.button("Open Camera and Capture Image"):
-        cap = cv2.VideoCapture(0)
+        cap = cv2.VideoCapture(1)
         ret, frame = cap.read()
         if ret:
             cap.release()
