@@ -55,7 +55,7 @@ def main():
 
     if uploaded_file and api_key:
         text = extract_text_from_image(uploaded_file, api_key)
-        st.image(uploaded_file, channels="BGR")
+        st.image(uploaded_file)
         st.write("Extracted Text:")
         st.text_area("Text", text, height=200)
 
