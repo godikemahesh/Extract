@@ -3,11 +3,7 @@ import requests
 import cv2
 from streamlit_webrtc import webrtc_streamer, VideoTransformerBase
 import numpy as np
-from PIL import Image
-def preprocess_image(image):
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    _, thresh = cv2.threshold(gray, 128, 255, cv2.THRESH_BINARY_INV)
-    return thresh
+
 # Function to call the ocr.space API
 def extract_text_from_image(image, api_key):
     response = requests.post(
@@ -58,13 +54,10 @@ def main():
             st.error("Failed to capture image")
 
     if uploaded_file and api_key:
-        image = Image.open(uploaded_file)
-        image_np = np.array(image)
-        preprocessed_image = preprocess_image(image_np)
-        st.image(preprocessed_image, channels="GRAY")
-        text = extract_text_from_image(preprocessed_image, api_key)
+        text = extract_text_from_image(uploaded_file, api_key)
         st.write("Extracted Text:")
         st.text_area("Text", text, height=200)
+
 
 if __name__ == "__main__":
     main()
