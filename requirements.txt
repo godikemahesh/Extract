@@ -2,5 +2,4 @@ streamlit
 pillow
 requests
 streamlit-webrtc
-webrtc_streamer
 
