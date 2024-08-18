@@ -54,8 +54,11 @@ def main():
             st.error("Failed to capture image")
 
     if uploaded_file and api_key:
-        # Extract text from the uploaded image
-        text = extract_text_from_image(uploaded_file, api_key)
+        image = Image.open(uploaded_file)
+        image_np = np.array(image)
+        preprocessed_image = preprocess_image(image_np)
+        st.image(preprocessed_image, channels="GRAY")
+        text = extract_text_from_image(preprocessed_image, api_key)
         st.write("Extracted Text:")
         st.text_area("Text", text, height=200)
 
