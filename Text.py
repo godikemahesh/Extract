@@ -3,6 +3,7 @@ import requests
 import cv2
 from streamlit_webrtc import webrtc_streamer, VideoTransformerBase
 import numpy as np
+from PIL import Image
 
 # Function to call the ocr.space API
 def extract_text_from_image(image, api_key):
