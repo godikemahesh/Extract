@@ -1,6 +1,5 @@
 import streamlit as st
 import requests
-import cv2
 from streamlit_webrtc import webrtc_streamer, VideoTransformerBase
 import numpy as np
 
